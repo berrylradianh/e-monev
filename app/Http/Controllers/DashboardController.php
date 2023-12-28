@@ -11,7 +11,7 @@ class DashboardController extends Controller
     public function index()
     {
         try {
-            return view('layouts.dashboard.master');
+            return view('pages.dashboard.dashboard');
         } catch (Exception $e) {
             dd($e->getMessage());
         }

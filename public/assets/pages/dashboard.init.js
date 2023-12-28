@@ -58,7 +58,7 @@
 
       Dashboard.prototype.init = function () {
 
-        
+
 
 
           //creating area chart
@@ -75,9 +75,9 @@
 
           //creating donut chart
           var $donutData = [
-              {label: "Download Sales", value: 12},
-              {label: "In-Store Sales", value: 30},
-              {label: "Mail-Order Sales", value: 20}
+              {label: "Operasi dan Bedah", value: 12},
+              {label: "Rawat Inap", value: 30},
+              {label: "Gawat Darurat", value: 20}
           ];
           this.createDonutChart('morris-donut-example', $donutData, ['#fcbe2d', '#30419b', '#02c58d']);
 
@@ -100,7 +100,7 @@
       $.Dashboard = new Dashboard, $.Dashboard.Constructor = Dashboard
 }(window.jQuery),
 
-//initializing 
+//initializing
   function ($) {
       "use strict";
       $.Dashboard.init();

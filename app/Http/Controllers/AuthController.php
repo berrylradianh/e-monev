@@ -63,7 +63,6 @@ class AuthController extends Controller
             ]);
 
             if ($user) {
-                // Auth::login($user);
                 return redirect()->intended('/login');
             }
 
