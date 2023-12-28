@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get('/home', [DashboardController::class, 'index']) -> name('dashboard');
 Route::get('/kuisioner', [KuisionerController::class, 'index']) -> name('kuisioner');
+Route::post('/kuisioner', [KuisionerController::class, 'store']) -> name('kuisioner.store');
 
 Route::get('/login', [AuthController::class, 'login']) -> name('login');
 Route::post('/login', [AuthController::class, 'post_login']) -> name('login.post');

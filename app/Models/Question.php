@@ -14,8 +14,8 @@ class Question extends Model
         'question'
     ];
 
-    public function answer(): HasOne
-    {
-        return $this->hasOne(Answer::class, 'question_id');
-    }
+    // public function answer(): HasOne
+    // {
+    //     return $this->hasOne(Answer::class, 'question_id');
+    // }
 }

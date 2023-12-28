@@ -26,13 +26,31 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <form method="POST">
+                            @if ($userHasFilledKuisioner)
+                            <p>Anda sudah mengisi kuisioner</p>
+                            @foreach ($questions as $data)
+                            <div class="form-group">
+                                <label for="pertanyaan{{ $data->id }}">{{ $data->id }} . {{ $data->question }}</label>
+                                <div class="ml-3">
+                                    <p>Jawaban: {{ $userAnswers['pertanyaan'.$data->id] }}</p>
+                                </div>
+                            </div>
+                            @endforeach
+                            @else
+                            <form method="POST" action="{{ route('kuisioner.store') }}">
+                                @csrf
                                 @foreach ($questions as $data)
                                 <div class="form-group">
-                                    <label for="pertanyaan1">{{$data->id }} .  {{$data->question}}</label>
+                                    <label for="pertanyaan{{ $data->id }}">{{ $data->id }} . {{ $data->question }}</label>
                                     <div class="ml-3">
-                                        <label class="radio-inline mr-2"><input type="radio" name="pertanyaan1" value="Ya"><span class="ml-1">Ya</span></label>
-                                        <label class="radio-inline"><input type="radio" name="pertanyaan1" value="Tidak"><span class="m-1">Tidak</span></label>
+                                        <label class="radio-inline mr-2">
+                                            <input type="radio" name="pertanyaan{{ $data->id }}" value="Ya">
+                                            <span class="ml-1">Ya</span>
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="pertanyaan{{ $data->id }}" value="Tidak">
+                                            <span class="m-1">Tidak</span>
+                                        </label>
                                     </div>
                                 </div>
                                 @endforeach
@@ -40,6 +58,7 @@
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
+                            @endif
                         </div>
                     </div>
                 </div>
