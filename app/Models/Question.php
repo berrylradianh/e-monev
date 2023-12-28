@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Question extends Model
 {
@@ -11,4 +13,9 @@ class Question extends Model
     protected $fillable = [
         'question'
     ];
+
+    public function answer(): HasOne
+    {
+        return $this->hasOne(Answer::class, 'question_id');
+    }
 }

@@ -86,7 +86,7 @@
                             <div>
                                 <h5 class="font-16">Lama Tunggu Rata-rata</h5>
                             </div>
-                            <h3 class="mt-4">86%</h3>
+                            <h3 class="mt-4">7 Hari</h3>
                             <div class="progress mt-4" style="height: 4px;">
                                 <div class="progress-bar bg-danger" role="progressbar" style="width: 82%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
@@ -94,37 +94,7 @@
                         </div>
                     </div>
                 </div>
-
-            </div>
-
-            <div class="row">
-                <div class="col-xl-8">
-                    <div class="card m-b-30">
-                        <div class="card-body">
-
-                            <h4 class="mt-0 header-title mb-4">Kepatuhan Terhadap Standar Medis</h4>
-
-                            <div id="morris-area-example" class="morris-charts morris-chart-height"></div>
-
-                        </div>
-                    </div>
-                </div>
-                <!-- end col -->
-
-                <div class="col-xl-4">
-                    <div class="card m-b-30">
-                        <div class="card-body">
-                            <h4 class="mt-0 header-title mb-4">Jenis Layanan</h4>
-
-                            <div id="morris-donut-example" class="morris-charts morris-chart-height"></div>
-
-                        </div>
-                    </div>
-                </div>
-                <!-- end col -->
-            </div>
             <!-- end row -->
-
         </div>
         <!-- container-fluid -->
 
