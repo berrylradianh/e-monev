@@ -13,7 +13,7 @@
                 </li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{route('pelaporan')}}" class="waves-effect">
                         <i class="icon-graph"></i> <span> Pelaporan </span>
                     </a>
                 </li>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KuisionerController;
+use App\Http\Controllers\PelaporanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,8 +21,11 @@ use Illuminate\Support\Facades\Route;
 //     return view('layouts.dashboard.master');
 // });
 Route::get('/home', [DashboardController::class, 'index']) -> name('dashboard');
+
 Route::get('/kuisioner', [KuisionerController::class, 'index']) -> name('kuisioner');
 Route::post('/kuisioner', [KuisionerController::class, 'store']) -> name('kuisioner.store');
+
+Route::get('/pelaporan', [PelaporanController::class, 'index']) -> name('pelaporan');
 
 Route::get('/login', [AuthController::class, 'login']) -> name('login');
 Route::post('/login', [AuthController::class, 'post_login']) -> name('login.post');

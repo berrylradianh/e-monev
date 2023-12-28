@@ -15,9 +15,7 @@ class KuisionerController extends Controller
     {
         try {
             $questions = Question::all();
-
             $user_id = Auth::id();
-
             $userHasFilledKuisioner = Answer::where('user_id', $user_id)->exists();
 
             $userAnswers = [];
