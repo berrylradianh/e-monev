@@ -78,22 +78,37 @@
         });
 
         function updateStatus() {
-            // Loop through each table row
             $('#medicalRecordsTable tbody tr').each(function() {
                 var form1Checked = $(this).find('td:nth-child(3) input[type="checkbox"]').prop('checked');
                 var form2Checked = $(this).find('td:nth-child(4) input[type="checkbox"]').prop('checked');
                 var form3Checked = $(this).find('td:nth-child(5) input[type="checkbox"]').prop('checked');
 
-                // Generate the status string based on checkbox states
-                var statusString = "";
-                statusString += form1Checked ? "Form 1: Lengkap, " : "Form 1: Tidak Lengkap, ";
-                statusString += form2Checked ? "Form 2: Lengkap, " : "Form 2: Tidak Lengkap, ";
-                statusString += form3Checked ? "Form 3: Lengkap." : "Form 3: Tidak Lengkap.";
+                var isComplete = form1Checked && form2Checked && form3Checked;
 
-                // Update the status column with the generated status string
-                $(this).find('td:last-child').text(statusString);
+                var statusCell = $(this).find('td:last-child');
+                var statusText = isComplete ? "Lengkap" : "Tidak Lengkap";
+                statusCell.text(statusText);
+
+                // Set the text color to red if the status is "Tidak Lengkap"
+                statusCell.css('color', statusText === "Tidak Lengkap" ? 'red' : '');
+
+                $(this).find('td:nth-child(n+3) small').remove();
+
+                if (!isComplete) {
+                    $(this).find('td:nth-child(n+3) input[type="checkbox"]:not(:checked)').after('<small style="color: red;">Tidak Lengkap</small>');
+                }
             });
         }
     });
 </script>
+
+<style>
+    /* Style to move the "Tidak Lengkap" text below the unchecked checkbox */
+    table tr td:nth-child(n+3) small {
+        display: block;
+        margin-top: 5px;
+        /* Adjust as needed */
+    }
+</style>
+
 @endsection
