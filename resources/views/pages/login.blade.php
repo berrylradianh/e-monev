@@ -6,21 +6,26 @@
     <div class="card card-pages shadow-none">
 
         <div class="card-body">
-            <h5 class="font-18 text-center">Sign in to continue</h5>
+            <h5 class="font-18 text-center">Sign in</h5>
 
-            <form class="form-horizontal m-t-30" action="#html">
-
+            <form class="form-horizontal m-t-30" action="#" method="POST">
+                @csrf
                 <div class="form-group">
                     <div class="col-12">
-                        <label>Username</label>
-                        <input class="form-control" type="text" required="" placeholder="Username">
+                        <label>Email</label>
+                        <input class="form-control" name="email" type="email" placeholder="Masukkan Email" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-12">
                         <label>Password</label>
-                        <input class="form-control" type="password" required="" placeholder="Password">
+                        <div class="input-group">
+                            <input class="form-control" name="password" id="password" type="password"  placeholder="Masukkan Password" required>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button" id="togglePassword">&#128065;</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -41,8 +46,8 @@
                     </div>
                 </div>
 
-                <div class="form-group row m-t-30 m-b-0">
-                    <div class="col-sm-5 text-right">
+                <div class="form-group mb-0 row">
+                    <div class="col-12 m-t-10 text-center">
                         <a href="{{url('register')}}" class="text-muted">Create an account</a>
                     </div>
                 </div>
@@ -51,4 +56,15 @@
 
     </div>
 </div>
+
+<script>
+    document.getElementById('togglePassword').addEventListener('click', function() {
+        var passwordInput = document.getElementById('password');
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+        }
+    });
+</script>
 @endsection
