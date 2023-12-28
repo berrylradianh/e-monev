@@ -8,7 +8,7 @@
         <div class="card-body">
             <h5 class="font-18 text-center">Sign in</h5>
 
-            <form class="form-horizontal m-t-30" action="#" method="POST">
+            <form class="form-horizontal m-t-30" action="{{route('login.post')}}" method="POST">
                 @csrf
                 <div class="form-group">
                     <div class="col-12">

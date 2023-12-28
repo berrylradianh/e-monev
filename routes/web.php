@@ -23,3 +23,4 @@ Route::get('/home', [DashboardController::class, 'index']) -> name('dashboard');
 Route::get('/login', [AuthController::class, 'login']) -> name('login');
 Route::post('/login', [AuthController::class, 'post_login']) -> name('login.post');
 Route::get('/register', [AuthController::class, 'register']) -> name('register');
+Route::post('/register', [AuthController::class, 'post_register']) -> name('register.post');

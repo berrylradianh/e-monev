@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,6 +41,33 @@ class AuthController extends Controller
             }
 
             return back()->withErrors(['email' => 'Invalid credentials']);
+        } catch (Exception $e) {
+            dd($e->getMessage());
+        }
+    }
+    public function post_register(Request $request)
+    {
+        try {
+            $this->validate($request, [
+                'email' => 'required|email|unique:users',
+                'name' => 'required',
+                'username' => 'required|unique:users',
+                'password' => 'required|min:6',
+            ]);
+
+            $user = User::create([
+                'email' => $request->input('email'),
+                'name' => $request->input('name'),
+                'username' => $request->input('username'),
+                'password' => bcrypt($request->input('password')),
+            ]);
+
+            if ($user) {
+                // Auth::login($user);
+                return redirect()->intended('/login');
+            }
+
+            return back()->withErrors(['email' => 'Registration failed']);
         } catch (Exception $e) {
             dd($e->getMessage());
         }
