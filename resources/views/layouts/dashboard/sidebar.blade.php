@@ -7,7 +7,7 @@
             <ul class="metismenu" id="side-menu">
                 <li class="menu-title">Menu</li>
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{route('dashboard')}}" class="waves-effect">
                         <i class="icon-accelerator"></i> <span> Dashboard </span>
                     </a>
                 </li>
@@ -19,7 +19,7 @@
                 </li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{route('kuisioner')}}" class="waves-effect">
                         <i class="icon-spread"></i> <span> Kuisioner </span>
                     </a>
                 </li>

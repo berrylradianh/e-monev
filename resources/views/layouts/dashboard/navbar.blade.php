@@ -23,9 +23,9 @@
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                         <!-- item-->
                         <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle"></i> Profile</a>
-                        <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right">11</span><i class="mdi mdi-settings"></i> Settings</a>
+                        <a class="dropdown-item d-block" href="#"><i class="mdi mdi-settings"></i> Settings</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-danger" href="#"><i class="mdi mdi-power text-danger"></i> Logout</a>
+                        <a class="dropdown-item text-danger" href="{{route('logout')}}"><i class="mdi mdi-power text-danger"></i> Logout</a>
                     </div>
                 </div>
             </li>
@@ -37,14 +37,6 @@
                 <button class="button-menu-mobile open-left waves-effect">
                     <i class="mdi mdi-menu"></i>
                 </button>
-            </li>
-            <li class="d-none d-md-inline-block">
-                <form role="search" class="app-search">
-                    <div class="form-group mb-0">
-                        <input type="text" class="form-control" placeholder="Search..">
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                    </div>
-                </form>
             </li>
         </ul>
 

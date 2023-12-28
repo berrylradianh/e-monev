@@ -130,10 +130,5 @@
 
     </div>
     <!-- content -->
-
-    <footer class="footer">
-        © 2023 <span class="d-none d-sm-inline-block"> - E-Monev <i class="mdi mdi-heart text-danger"></i> by Anggraina Diastri</span>.
-    </footer>
-
 </div>
 @endsection

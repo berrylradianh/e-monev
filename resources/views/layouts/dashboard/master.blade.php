@@ -25,7 +25,10 @@
         <!-- ============================================================== -->
         <!-- End Right content here -->
         <!-- ============================================================== -->
-
+        <footer class="footer">
+            <!-- © 2023 <span class="d-none d-sm-inline-block"> - E-Monev <i class="mdi mdi-heart text-danger"></i> by Anggraina Diastri</span>. -->
+            © 2023 <span class="d-none d-sm-inline-block"> - Rumah Sakit Petrokimia Gresik</span>
+        </footer>
     </div>
     <!-- END wrapper -->
 
