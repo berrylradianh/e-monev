@@ -19,6 +19,48 @@
                 </div> <!-- end row -->
             </div>
             <!-- end page-title -->
+
+            <!-- Tombol Tambah Data di atas tabel -->
+    <div class="row mb-3 ml-1">
+        <!-- Ensure that the button triggers the modal -->
+        <a href="#" class="btn btn-success" data-toggle="modal" data-target="#tambahDataModal">Tambah Data</a>
+    </div>
+
+            <!-- Form Modal -->
+            <div class="modal fade" id="tambahDataModal" tabindex="-1" role="dialog" aria-labelledby="tambahDataModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="tambahDataModalLabel">Tambah Data Rekam Medis</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="no_rm">No. Rekam Medis</label>
+                                    <input type="text" class="form-control" id="no_rm" name="no_rm" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="form1">Form 1</label>
+                                    <input type="checkbox" class="ml-3 form-check-input" id="form1" name="form1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="form2">Form 2</label>
+                                    <input type="checkbox" class="ml-3 form-check-input" id="form2" name="form2">
+                                </div>
+                                <div class="form-group">
+                                    <label for="form3">Form 3</label>
+                                    <input type="checkbox" class="ml-3 form-check-input" id="form3" name="form3">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="table-responsive">
                     <table class="table mb-0" id="medicalRecordsTable">
@@ -34,19 +76,20 @@
                         </thead>
                         <tbody>
                             @foreach($pelaporan as $index => $item)
-                                <tr>
-                                    <th scope="row">{{ $index + 1 }}</th>
-                                    <td class="text-center">{{ $item->no_rm }}</td>
-                                    <td class="text-center"><input type="checkbox" {{ $item->form1 ? 'checked' : '' }}></td>
-                                    <td class="text-center"><input type="checkbox" {{ $item->form2 ? 'checked' : '' }}></td>
-                                    <td class="text-center"><input type="checkbox" {{ $item->form3 ? 'checked' : '' }}></td>
-                                    <td class="text-center">{{ $item->status }}</td>
-                                </tr>
+                            <tr>
+                                <th scope="row">{{ $index + 1 }}</th>
+                                <td class="text-center">{{ $item->no_rm }}</td>
+                                <td class="text-center"><input type="checkbox" {{ $item->form1 ? 'checked' : '' }}></td>
+                                <td class="text-center"><input type="checkbox" {{ $item->form2 ? 'checked' : '' }}></td>
+                                <td class="text-center"><input type="checkbox" {{ $item->form3 ? 'checked' : '' }}></td>
+                                <td class="text-center">{{ $item->status }}</td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
             </div> <!-- end row -->
+
             <div class="row mt-3">
                 <div class="col-md-12 text-center">
                     <button class="btn btn-primary" id="saveButton">Save</button>
@@ -57,7 +100,6 @@
     </div>
     <!-- content -->
 </div>
-
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
     $(document).ready(function() {
@@ -97,8 +139,7 @@
             $.ajax({
                 url: '/saveData',
                 method: 'POST',
-                data: {
-                },
+                data: {},
                 success: function(response) {
                     console.log(response);
                     alert('Data saved successfully!');
