@@ -31,14 +31,14 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <div class="col-12">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="customCheck1">
                             <label class="custom-control-label font-weight-normal" for="customCheck1">I accept <a href="#" class="text-primary">Terms and Conditions</a></label>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="form-group text-center m-t-20">
                     <div class="col-12">
