@@ -33,34 +33,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td class="text-center">RM.123</td>
-                                <td class="text-center"><input type="checkbox" checked></td>
-                                <td class="text-center"><input type="checkbox" checked></td>
-                                <td class="text-center"><input type="checkbox" checked></td>
-                                <td class="text-center"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td class="text-center">RM.345</td>
-                                <td class="text-center"><input type="checkbox"></td>
-                                <td class="text-center"><input type="checkbox"></td>
-                                <td class="text-center"><input type="checkbox"></td>
-                                <td class="text-center"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td class="text-center">RM.678</td>
-                                <td class="text-center"><input type="checkbox" checked></td>
-                                <td class="text-center"><input type="checkbox" checked></td>
-                                <td class="text-center"><input type="checkbox" checked></td>
-                                <td class="text-center"></td>
-                            </tr>
+                            @foreach($pelaporan as $index => $item)
+                                <tr>
+                                    <th scope="row">{{ $index + 1 }}</th>
+                                    <td class="text-center">{{ $item->no_rm }}</td>
+                                    <td class="text-center"><input type="checkbox" {{ $item->form1 ? 'checked' : '' }}></td>
+                                    <td class="text-center"><input type="checkbox" {{ $item->form2 ? 'checked' : '' }}></td>
+                                    <td class="text-center"><input type="checkbox" {{ $item->form3 ? 'checked' : '' }}></td>
+                                    <td class="text-center">{{ $item->status }}</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
             </div> <!-- end row -->
+            <div class="row mt-3">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-primary" id="saveButton">Save</button>
+                </div>
+            </div>
         </div>
         <!-- container-fluid -->
     </div>
@@ -72,9 +63,12 @@
     $(document).ready(function() {
         updateStatus();
 
-        // Attach a change event listener to the checkboxes
         $('input[type="checkbox"]').change(function() {
             updateStatus();
+        });
+
+        $('#saveButton').click(function() {
+            saveData();
         });
 
         function updateStatus() {
@@ -89,7 +83,6 @@
                 var statusText = isComplete ? "Lengkap" : "Tidak Lengkap";
                 statusCell.text(statusText);
 
-                // Set the text color to red if the status is "Tidak Lengkap"
                 statusCell.css('color', statusText === "Tidak Lengkap" ? 'red' : '');
 
                 $(this).find('td:nth-child(n+3) small').remove();
@@ -99,15 +92,30 @@
                 }
             });
         }
+
+        function saveData() {
+            $.ajax({
+                url: '/saveData',
+                method: 'POST',
+                data: {
+                },
+                success: function(response) {
+                    console.log(response);
+                    alert('Data saved successfully!');
+                },
+                error: function(error) {
+                    console.error(error);
+                    alert('Error saving data!');
+                }
+            });
+        }
     });
 </script>
 
 <style>
-    /* Style to move the "Tidak Lengkap" text below the unchecked checkbox */
     table tr td:nth-child(n+3) small {
         display: block;
         margin-top: 5px;
-        /* Adjust as needed */
     }
 </style>
 
