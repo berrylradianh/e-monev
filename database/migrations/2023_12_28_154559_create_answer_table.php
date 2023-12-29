@@ -14,9 +14,8 @@ return new class extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('question_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            for ($i = 1; $i <= 15; $i++) {
+            for ($i = 1; $i <= 14; $i++) {
                 $table->text("pertanyaan$i")->nullable();
             }
 

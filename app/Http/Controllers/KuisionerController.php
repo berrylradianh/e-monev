@@ -39,7 +39,7 @@ class KuisionerController extends Controller
 
             $answer = new Answer(['user_id' => Auth::user()->id]);
 
-            for ($i = 1; $i <= 15; $i++) {
+            for ($i = 1; $i <= 14; $i++) {
                 $answer->setAttribute("pertanyaan$i", $request->input("pertanyaan$i"));
             }
 
