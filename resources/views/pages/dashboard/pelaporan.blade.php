@@ -93,7 +93,7 @@
                                     <td class="text-center">
                                         <input type="checkbox" name="form3[{{ $index }}]" {{ $item->form3 ? 'checked' : '' }} value="on">
                                     </td>
-                                    <td class="text-center">{{ $item->status }}</td>
+                                    <td class="text-center"></td>
                                 </tr>
                                 @endforeach
                             </tbody>
