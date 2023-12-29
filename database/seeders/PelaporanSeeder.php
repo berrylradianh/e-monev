@@ -16,34 +16,34 @@ class PelaporanSeeder extends Seeder
         //
         Pelaporan::create([
             'no_rm' => '123456',
-            'form1' => true,
-            'form2' => true,
-            'form3' => true,
+            'form1' => false,
+            'form2' => false,
+            'form3' => false,
         ]);
 
         Pelaporan::create([
             'no_rm' => '012973',
-            'form1' => true,
+            'form1' => false,
             'form2' => false,
-            'form3' => true,
+            'form3' => false,
         ]);
 
         Pelaporan::create([
             'no_rm' => '102946',
             'form1' => false,
-            'form2' => true,
-            'form3' => true,
-        ]);
-
-        Pelaporan::create([
-            'no_rm' => '126740',
-            'form1' => true,
-            'form2' => true,
+            'form2' => false,
             'form3' => false,
         ]);
 
         Pelaporan::create([
             'no_rm' => '126740',
+            'form1' => false,
+            'form2' => false,
+            'form3' => false,
+        ]);
+
+        Pelaporan::create([
+            'no_rm' => '126741',
             'form1' => false,
             'form2' => false,
             'form3' => false,

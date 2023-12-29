@@ -21,10 +21,10 @@
             <!-- end page-title -->
 
             <!-- Tombol Tambah Data di atas tabel -->
-    <div class="row mb-3 ml-1">
-        <!-- Ensure that the button triggers the modal -->
-        <a href="#" class="btn btn-success" data-toggle="modal" data-target="#tambahDataModal">Tambah Data</a>
-    </div>
+            <div class="row mb-3 ml-1">
+                <!-- Ensure that the button triggers the modal -->
+                <a href="#" class="btn btn-success" data-toggle="modal" data-target="#tambahDataModal">Tambah Data</a>
+            </div>
 
             <!-- Form Modal -->
             <div class="modal fade" id="tambahDataModal" tabindex="-1" role="dialog" aria-labelledby="tambahDataModalLabel" aria-hidden="true">
@@ -64,38 +64,47 @@
 
             <div class="row">
                 <div class="table-responsive">
-                    <table class="table mb-0" id="medicalRecordsTable">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th class="text-center">No. Rekam Medis</th>
-                                <th class="text-center">Form 1</th>
-                                <th class="text-center">Form 2</th>
-                                <th class="text-center">Form 3</th>
-                                <th class="text-center">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($pelaporan as $index => $item)
-                            <tr>
-                                <th scope="row">{{ $index + 1 }}</th>
-                                <td class="text-center">{{ $item->no_rm }}</td>
-                                <td class="text-center"><input type="checkbox" {{ $item->form1 ? 'checked' : '' }}></td>
-                                <td class="text-center"><input type="checkbox" {{ $item->form2 ? 'checked' : '' }}></td>
-                                <td class="text-center"><input type="checkbox" {{ $item->form3 ? 'checked' : '' }}></td>
-                                <td class="text-center">{{ $item->status }}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                    <form action="{{ route('pelaporan.update') }}" method="POST">
+                        @csrf
+                        <table class="table mb-0" id="medicalRecordsTable">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th class="text-center">No. Rekam Medis</th>
+                                    <th class="text-center">Form 1</th>
+                                    <th class="text-center">Form 2</th>
+                                    <th class="text-center">Form 3</th>
+                                    <th class="text-center">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($pelaporan as $index => $item)
+                                <tr>
+                                    <th scope="row">{{ $index + 1 }}</th>
+                                    <td class="text-center">{{ $item->no_rm }}
+                                        <input type="hidden" name="no_rm[]" value="{{ $item->no_rm }}">
+                                    </td>
+                                    <td class="text-center">
+                                        <input type="checkbox" name="form1[{{ $index }}]" {{ $item->form1 ? 'checked' : '' }} value="on">
+                                    </td>
+                                    <td class="text-center">
+                                        <input type="checkbox" name="form2[{{ $index }}]" {{ $item->form2 ? 'checked' : '' }} value="on">
+                                    </td>
+                                    <td class="text-center">
+                                        <input type="checkbox" name="form3[{{ $index }}]" {{ $item->form3 ? 'checked' : '' }} value="on">
+                                    </td>
+                                    <td class="text-center">{{ $item->status }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <div class="col-md-12 text-center mt-3">
+                            <button type="submit" class="btn btn-primary" id="saveButton">Save</button>
+                        </div>
+                    </form>
+
                 </div>
             </div> <!-- end row -->
-
-            <div class="row mt-3">
-                <div class="col-md-12 text-center">
-                    <button class="btn btn-primary" id="saveButton">Save</button>
-                </div>
-            </div>
         </div>
         <!-- container-fluid -->
     </div>
@@ -132,22 +141,6 @@
 
                 if (!isComplete) {
                     $(this).find('td:nth-child(n+3) input[type="checkbox"]:not(:checked)').after('<small style="color: red;">Tidak Lengkap</small>');
-                }
-            });
-        }
-
-        function saveData() {
-            $.ajax({
-                url: '{{ route("pelaporan.update") }}',
-                method: 'POST',
-                data: {},
-                success: function(response) {
-                    console.log(response);
-                    alert('Data saved successfully!');
-                },
-                error: function(error) {
-                    console.error(error);
-                    alert('Error saving data!');
                 }
             });
         }

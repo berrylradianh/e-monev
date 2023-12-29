@@ -29,6 +29,7 @@ Route::get('/pelaporan', [PelaporanController::class, 'index']) -> name('pelapor
 Route::post('/pelaporan', [PelaporanController::class, 'store']) -> name('pelaporan.store');
 Route::post('/savePelaporan', [PelaporanController::class, 'update']) -> name('pelaporan.update');
 
+Route::get('/', [AuthController::class, 'login']) -> name('login');
 Route::get('/login', [AuthController::class, 'login']) -> name('login');
 Route::post('/login', [AuthController::class, 'post_login']) -> name('login.post');
 Route::get('/register', [AuthController::class, 'register']) -> name('register');

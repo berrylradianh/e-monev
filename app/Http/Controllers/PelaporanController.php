@@ -20,26 +20,31 @@ class PelaporanController extends Controller
     public function update(Request $request)
     {
         try {
-            dd($request->all());
-            $requestData = $request->all();
+            $requestData = $request->except('_token');
 
-            foreach ($requestData['pelaporan'] as $item) {
-                $pelaporan = Pelaporan::find($item['id']);
+            // Assuming form data keys are named like "form1", "form2", etc.
+            foreach ($requestData as $key => $values) {
+                foreach ($values as $index => $value) {
+                    // Check if the checkbox is checked
+                    if ($value === 'on') {
+                        // Create an array to store the data to be saved
+                        $dataToSave = [
+                            $key => true, // or false, depending on your logic
+                        ];
 
-                if ($pelaporan) {
-                    $pelaporan->form1 = isset($item['form1']) ? true : false;
-                    $pelaporan->form2 = isset($item['form2']) ? true : false;
-                    $pelaporan->form3 = isset($item['form3']) ? true : false;
-
-                    $pelaporan->save();
+                        // Update the record based on no_rm value
+                        Pelaporan::updateOrInsert(['no_rm' => $request->no_rm[$index]], $dataToSave);
+                    }
                 }
             }
 
-            return response()->json(['message' => 'Data updated successfully']);
+            return redirect()->intended('/pelaporan');
         } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
+            dd($e->getMessage());
         }
     }
+
+
     public function store(Request $request)
     {
         try {

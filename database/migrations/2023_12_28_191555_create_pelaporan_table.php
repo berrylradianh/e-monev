@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('pelaporans', function (Blueprint $table) {
             $table->id();
             $table->string('no_rm');
-            $table->boolean('form1');
-            $table->boolean('form2');
-            $table->boolean('form3');
+            $table->boolean('form1')->default(false);
+            $table->boolean('form2')->default(false);
+            $table->boolean('form3')->default(false);
             $table->timestamps();
         });
     }
