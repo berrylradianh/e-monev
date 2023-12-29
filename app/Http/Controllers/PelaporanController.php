@@ -40,5 +40,23 @@ class PelaporanController extends Controller
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
+    public function store(Request $request)
+    {
+        try {
+            // dd($request->all());
+            $this->validate($request, [
+                'no_rm' => 'required',
+            ]);
 
+            $pelaporan = Pelaporan::create([
+                'no_rm' => $request->input('no_rm'),
+                'form1' => $request->input('form1') == 'on' ? true : false,
+                'form2' => $request->input('form2') == 'on' ? true : false,
+                'form3' => $request->input('form3') == 'on' ? true : false,
+            ]);
+            return redirect()->intended('/pelaporan');
+        } catch (Exception $e) {
+            dd($e->getMessage());
+        }
+    }
 }

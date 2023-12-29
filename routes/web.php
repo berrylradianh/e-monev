@@ -26,6 +26,7 @@ Route::get('/kuisioner', [KuisionerController::class, 'index']) -> name('kuision
 Route::post('/kuisioner', [KuisionerController::class, 'store']) -> name('kuisioner.store');
 
 Route::get('/pelaporan', [PelaporanController::class, 'index']) -> name('pelaporan');
+Route::post('/pelaporan', [PelaporanController::class, 'store']) -> name('pelaporan.store');
 Route::post('/savePelaporan', [PelaporanController::class, 'update']) -> name('pelaporan.update');
 
 Route::get('/login', [AuthController::class, 'login']) -> name('login');

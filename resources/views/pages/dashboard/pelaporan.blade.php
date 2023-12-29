@@ -37,7 +37,8 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form method="POST" action="{{route('pelaporan.store')}}">
+                                @csrf
                                 <div class="form-group">
                                     <label for="no_rm">No. Rekam Medis</label>
                                     <input type="text" class="form-control" id="no_rm" name="no_rm" required>
