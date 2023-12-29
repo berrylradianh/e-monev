@@ -138,7 +138,7 @@
 
         function saveData() {
             $.ajax({
-                url: '/saveData',
+                url: '{{ route("pelaporan.update") }}',
                 method: 'POST',
                 data: {},
                 success: function(response) {

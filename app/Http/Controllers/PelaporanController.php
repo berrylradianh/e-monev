@@ -54,7 +54,11 @@ class PelaporanController extends Controller
                 'form2' => $request->input('form2') == 'on' ? true : false,
                 'form3' => $request->input('form3') == 'on' ? true : false,
             ]);
-            return redirect()->intended('/pelaporan');
+
+            if ($pelaporan) {
+                return redirect()->intended('/pelaporan');
+            }
+            return back();
         } catch (Exception $e) {
             dd($e->getMessage());
         }
